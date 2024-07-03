@@ -1,8 +1,9 @@
 import sys
-import pygame
-import math
+import tanks.tank
+
+from setting import settings
 from map import Map
-from settings import *
+from setting.settings import *
 
 # Pygame Settings
 pygame.init()
@@ -28,9 +29,14 @@ fmap.setup(map1)
 clock = pygame.time.Clock()
 
 def toDisplayCoord(v):
-    return pygame.Vector2(v.x * 64, v.y * 64)
+    return pygame.Vector2(v.x * settings.tileSize, v.y * settings.tileSize)
 
 def main():
+    # 이미지 불러오기 테스트
+    tempTank = tanks.tank.Tanks(screen)
+    print(tanks.tank.projectPath+'\\assets\\Tank\\tanks_tankNavy1.png') # 이미지 경로 출력
+    screen.blit(tempTank.tankImage, (64, 64))
+
     global isGameOver
     while not isGameOver:
         for event in pygame.event.get():
