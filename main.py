@@ -1,8 +1,8 @@
 import sys
-import pygame
-import math
-from map import Map
-from settings import *
+import tanks.tank
+
+from settings import settings
+from settings.settings import *
 
 # Pygame Settings
 pygame.init()
@@ -17,20 +17,18 @@ isGameOver: bool = False
 # 디버깅용, 릴리즈 시 보이지 않음.
 print(str(screenWidth) + 'x' + str(screenRealHeight))
 
-# 맵 데이터는 map.py에 존재.
-# Map 클래스는 'def __init__(self, lv_data, surface)'가 생성자, lv_data는 맵 2차원 배열 데이터, surface에는 screen을 넣어주면 됨.
-fmap = Map(map1, screen)
-
-# setup 메서드로 타일 위치 세팅
-fmap.setup(map1)
-
 # 프레임 유지(deltaTime)
 clock = pygame.time.Clock()
 
 def toDisplayCoord(v):
-    return pygame.Vector2(v.x * 64, v.y * 64)
+    return pygame.Vector2(v.x * settings.tileSize, v.y * settings.tileSize)
 
 def main():
+    # 이미지 불러오기 테스트
+    tempTank = tanks.tank.Tank(screen)
+    print(tanks.tank.projectPath+'/assets/Tank/tanks_tankNavy1.png') # 이미지 경로 출력
+    screen.blit(tempTank.tankImage, (64, 64))
+
     global isGameOver
     while not isGameOver:
         for event in pygame.event.get():
