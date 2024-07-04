@@ -1,9 +1,9 @@
-import pygame
-from settings import *
+from settings import settings
+from settings.settings import *
 
 
 def toDisplayCoord(v):
-    return pygame.Vector2(v.x * 64, v.y * 64+26)
+    return pygame.Vector2(v.x * settings.tileSize, v.y * settings.tileSize + 26)
 
 
 class Player(pygame.sprite.Sprite):
