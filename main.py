@@ -25,9 +25,9 @@ def toDisplayCoord(v):
 
 def main():
     # 이미지 불러오기 테스트
-    tempTank = tanks.tank.Tank(screen)
-    print(tanks.tank.projectPath+'/assets/Tank/tanks_tankNavy1.png') # 이미지 경로 출력
-    screen.blit(tempTank.tankImage, (64, 64))
+
+    # print(tanks.tank.projectPath+'/assets/Tank/tanks_tankNavy1.png')  # 이미지 경로 출력
+
 
     global isGameOver
     while not isGameOver:
@@ -41,13 +41,13 @@ def main():
     sys.exit()
 
 def game():
-    global isGameOver, screen, fmap, clock
+    global isGameOver, screen, clock
 
     # 배경 렌더링
     screen.fill((125, 229, 255))
 
-    # 맵 렌더링
-    fmap.run()
+    tempTank = tanks.tank.Tank(screen)
+    screen.blit(tempTank.tankImage, (64, 64))
 
     # cr = pygame.Vector2(0, 7)
     # dcr = toDisplayCoord(cr)
